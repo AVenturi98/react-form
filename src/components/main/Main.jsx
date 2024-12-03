@@ -7,8 +7,6 @@ import Todos from '../Todos/Todos'
 
 export default function mainSection() {
 
-    const notPublished = document.get
-
     const [posts, setPostsFilm] = useState(initPosts)
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
@@ -34,6 +32,12 @@ export default function mainSection() {
         console.log('aggiunto')
     }
 
+    function deletePost(post) {
+
+        setPostsFilm(posts.filter(el => el !== post))
+    }
+
+
     return (
         <>
             <div className="container">
@@ -58,7 +62,7 @@ export default function mainSection() {
                     </div>
                     {posts.map((post) =>
                         <div key={post.id} className="col-6">
-                            <Card title={post.title} content={post.content} tags={post.tags} published={post.published} image={post.image} />
+                            <Card callBack={() => deletePost(post)} title={post.title} content={post.content} tags={post.tags} published={post.published} image={post.image} />
                         </div>)}
                 </div>
                 <div className="container">

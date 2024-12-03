@@ -1,7 +1,7 @@
 import style from './Card.module.css'
 import imageDefault from '../../assets/31343C.svg'
 
-function Card({ title = '', content = '', tags = '', published, image }) {
+function Card({ title = '', content = '', tags = '', published, image, callBack = () => { } }) {
 
     const elementTags = tags.map((tag, elmnTag, className) => {
 
@@ -13,6 +13,9 @@ function Card({ title = '', content = '', tags = '', published, image }) {
 
         return <p key={elmnTag} className={className}>{tag}</p>
     })
+
+
+
 
     return (
         <>
@@ -28,11 +31,11 @@ function Card({ title = '', content = '', tags = '', published, image }) {
                             <div className={style.descriptionCard}>{content}</div>
                             <div className={style.btnFlex}>
                                 <button className={style.btn}>BUTTON</button>
-                                <button className={style.btnDelete}>DELETE</button>
+                                <button onClick={callBack} className={style.btnDelete}>DELETE</button>
                             </div>
                         </div>
-                    </div>
-                </main>}
+                    </div >
+                </main >}
         </>
     )
 }
